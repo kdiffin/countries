@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-
+import React from 'react'
+import Navbar from './components/Navbar'
 function App() {
-  const [count, setCount] = useState<number>(0)
+  
 
   return (
     <div className="App">
-      
+      <Navbar />
     </div>
   )
 }

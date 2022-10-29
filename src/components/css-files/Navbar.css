@@ -1,0 +1,50 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 1.2px 8px #00000048;
+  width: 100%;
+}
+
+.navbar > h1 {
+  font-weight: 900;
+  margin-left: 70px;
+  transition: ease-in 0.2s;
+}
+
+.navbar__mode-button {
+  margin-left: auto;
+  font-weight: normal;
+  cursor: pointer;
+  font-size: small;
+  margin-right: 90px;
+  transition: ease-in 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 1300px) {
+  .navbar > h1 {
+    transition: ease-in 0.2s;
+    font-size: xx-large;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .navbar__mode-button {
+    font-size: medium;
+    transition: ease-in 0.2s;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .navbar__mode-button {
+    margin-right: 20px;
+  }
+  .navbar > h1 {
+    margin-left: 20px;
+  }
+}
+
+.navbar__mode-button > h4 {
+  font-weight: normal;
+  margin-left: 5px;
+}
