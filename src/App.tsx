@@ -6,6 +6,7 @@ import { countryDataInterface } from './interfaces/countryDataInterface'
 import Navbar from './components/Navbar'
 import SearchIcon from '@mui/icons-material/Search';
 import Country from './components/Country'
+import CountryInfo from './components/CountryInfo'
 
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
   const [countryData, setCountryData] = useState([] as countryDataInterface[])
   const [countryDataMutable, setCountryDataMutable] = useState([] as countryDataInterface[])
   const [toggleDropdown, setToggleDropdown ] = useState(false)
+  const [toggleCountryInfo, setToggleCountryInfo ] = useState(false)
+  const [countryId, setCountryId] = useState<number>(0);
   const [regionSelected, setRegionSelected] = useState(false)
 
 
@@ -39,68 +42,85 @@ function App() {
   });
 
 
-const countrysList = countryData.map((country, index) => {
-  return (
-    <Country 
-      countryName={country.name.common}
-      countryImg={country.flags.png} 
-      countryRegion={country.region}
-      countryCapital={country.capital}
-      countryPopulation={country.population}
-      key={nanoid ()}
-    /> 
-)
-})
+  const countrysList = countryData.map((country, index) => {
+    return (
+      <Country 
+        countryName={country.name.common}
+        countryImg={country.flags.png} 
+        countryRegion={country.region}
+        countryCapital={country.capital}
+        countryPopulation={country.population}
+        key={nanoid()}
+        showCountryInfo={showCountryInfo}
+        name={country.name.common}
 
-const countryListFiltered = countryDataMutable.map((country) => {
-  return (
-    <Country 
-      countryName={country.name.common}
-      countryImg={country.flags.png} 
-      countryRegion={country.region}
-      countryCapital={country.capital}
-      countryPopulation={country.population}
-      key={nanoid ()}
-  
-    />
+      /> 
   )
-})
+  })
+
+  const countryListFiltered = countryDataMutable.map((country) => {
+    return (
+      <Country 
+        countryName={country.name.common}
+        countryImg={country.flags.png} 
+        countryRegion={country.region}
+        countryCapital={country.capital}
+        countryPopulation={country.population}
+        key={nanoid()}
+        showCountryInfo={showCountryInfo}
+        name={country.name.common}
+      />
+    )
+  })
 
 
-function selectAsia(){
-  setCountryDataMutable(countryData.filter((country) => country.region == "Asia" ))
-  setRegionSelected(true) 
-}
-function selectEurope(){
-  setCountryDataMutable(countryData.filter((country) => country.region == "Europe" ))
-  setRegionSelected(true)
-}
-function selectAfrica(){
-  setCountryDataMutable(countryData.filter((country) => country.region == "Africa" ))
-  setRegionSelected(true)
-}
-function selectOceania(){
-  setCountryDataMutable(countryData.filter((country) => country.region == "Oceania" ))
-  setRegionSelected(true)
-}
-function selectAmericas(){
-  setCountryDataMutable(countryData.filter((country) => country.region == "Americas" ))
-  setRegionSelected(true)  
-}
-function selectAntarctic(){
-  setCountryDataMutable(countryData.filter((country) => country.region == "Antarctic" ))
-  setRegionSelected(true)
-}
+  function selectAsia(){
+    setCountryDataMutable(countryData.filter((country) => country.region == "Asia" ))
+    setRegionSelected(true) 
+  }
+  function selectEurope(){
+    setCountryDataMutable(countryData.filter((country) => country.region == "Europe" ))
+    setRegionSelected(true)
+  }
+  function selectAfrica(){
+    setCountryDataMutable(countryData.filter((country) => country.region == "Africa" ))
+    setRegionSelected(true)
+  }
+  function selectOceania(){
+    setCountryDataMutable(countryData.filter((country) => country.region == "Oceania" ))
+    setRegionSelected(true)
+  }
+  function selectAmericas(){
+    setCountryDataMutable(countryData.filter((country) => country.region == "Americas" ))
+    setRegionSelected(true)  
+  }
+  function selectAntarctic(){
+    setCountryDataMutable(countryData.filter((country) => country.region == "Antarctic" ))
+    setRegionSelected(true)
+  }
+
+  function showCountryInfo(event: any, countryName: any) {
+    setToggleCountryInfo(true)
+    const boolList = countryData.map((country) => country.name.common === countryName);
+    const index: number = boolList.indexOf(true);
+    setCountryId(index);
+    
+    
+    
+  }
+
+  function hideCountryInfo() {
+    setToggleCountryInfo(false)
+  }
 
 
 
-
- 
+  
   return (
     <div className="App">
       <Navbar />
-      <div className="app__body">
-        
+      {!toggleCountryInfo ? <div className="app__body">
+
         <div className="app__form">
           <div className="app__form-input-container">
             <span ><SearchIcon className="app__form-input-search"/></span><input type="text" className="app__form-input"placeholder="Search for a country..."/>
@@ -127,7 +147,7 @@ function selectAntarctic(){
           
 
         </div>
-      </div>
+      </div> : <CountryInfo countryImg={countryData[countryId].flags.png} hideCountryInfo={hideCountryInfo}/>}
     </div>
   )
 }
