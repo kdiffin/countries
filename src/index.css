@@ -52,13 +52,13 @@ body {
   flex-wrap: wrap;
   padding-left: 19px;
   padding-right: 18px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   margin-top: 30px;
 }
 
 .app__form-input {
   background-color: white;
-
+  width: 100%;
   border: none;
   outline: none;
   margin-right: auto;
@@ -73,7 +73,9 @@ body {
   padding: 12px;
   box-shadow: 2px 3px 3px rgba(107, 101, 101, 0.418);
   width: 600px;
+  margin-bottom: 40px;
   background-color: white;
+  margin-right: auto;
   border-radius: 5px;
 }
 
