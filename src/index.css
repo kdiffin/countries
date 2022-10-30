@@ -73,7 +73,7 @@ body {
   padding: 12px;
   box-shadow: 2px 3px 3px rgba(107, 101, 101, 0.418);
   width: 600px;
-  margin-bottom: 40px;
+
   background-color: white;
   margin-right: auto;
   border-radius: 5px;
@@ -88,4 +88,44 @@ body {
 
 .app__form-input-search {
   margin-top: 5px;
+}
+
+.app__form-select {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.app__form-select > h4 {
+  background-color: white;
+  box-shadow: 2px 3px 3px rgba(107, 101, 101, 0.418);
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.app__form-select > ul {
+  position: absolute;
+  margin-top: 420px;
+  z-index: 2;
+  border-radius: 8px;
+  list-style-type: none;
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  width: 200px;
+  box-shadow: 2px 3px 3px rgba(107, 101, 101, 0.418);
+}
+
+.app__form-select > ul > li {
+  margin-bottom: 8px;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(190, 172, 172, 0.301);
 }

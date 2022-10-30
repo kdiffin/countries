@@ -109,7 +109,7 @@ function selectAntarctic(){
 
           <div className="app__form-select">
             <h4  style={{fontWeight: 400}}onClick={() => setToggleDropdown(!toggleDropdown)}>Select by region:</h4>
-            {toggleDropdown && <ul>
+            {toggleDropdown && <ul className="show">
               <li onClick={() => setRegionSelected(false)} >Any region</li>
               <li onClick={selectAsia} >Asia</li>
               <li onClick={selectEurope}>Europe</li>
