@@ -8,8 +8,82 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background-color: var(--site-background);
 }
 
 .App {
   color: var(--lightmode-text);
+
+  height: 100vh;
+}
+
+.app__body {
+  padding: 40px;
+  padding-right: 70px;
+  padding-left: 70px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 600px) {
+  .app__body {
+    padding-right: 15px;
+
+    padding-left: 15px;
+  }
+}
+
+.app__countrysList {
+  display: flex;
+  justify-content: space-around;
+  transition: transform 0.25s;
+  flex-wrap: wrap;
+  padding: 0px;
+}
+
+.app__form {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 19px;
+  padding-right: 18px;
+  margin-bottom: 60px;
+  margin-top: 30px;
+}
+
+.app__form-input {
+  background-color: white;
+
+  border: none;
+  outline: none;
+  margin-right: auto;
+  padding: 12px;
+  margin: 0;
+}
+
+.app__form-input-container {
+  display: flex;
+  align-items: center;
+  width: 600px;
+  padding: 12px;
+  box-shadow: 2px 3px 3px rgba(107, 101, 101, 0.418);
+  width: 600px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.app__form-input-container > button {
+  display: none;
+  margin: 0;
+
+  padding: 0;
+}
+
+.app__form-input-search {
+  margin-top: 5px;
 }
