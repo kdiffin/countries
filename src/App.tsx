@@ -27,7 +27,7 @@ function App() {
   }, [])
       
   //this sorted everything but idk why really i thought i needed to setcountrydata to it 
-  countryData.sort(function(a: any,b : any){
+  countryData.sort(function(a,b ){
     if (a.name.common < b.name.common) {
       return -1;
     }
@@ -61,8 +61,7 @@ const countryListFiltered = countryDataMutable.map((country) => {
       countryCapital={country.capital}
       countryPopulation={country.population}
       key={nanoid ()}
-    
-    
+  
     />
   )
 })
@@ -101,6 +100,7 @@ function selectAntarctic(){
     <div className="App">
       <Navbar />
       <div className="app__body">
+        
         <div className="app__form">
           <div className="app__form-input-container">
             <span ><SearchIcon className="app__form-input-search"/></span><input type="text" className="app__form-input"placeholder="Search for a country..."/>
@@ -109,7 +109,7 @@ function selectAntarctic(){
 
           <div className="app__form-select">
             <h4  style={{fontWeight: 400}}onClick={() => setToggleDropdown(!toggleDropdown)}>Select by region:</h4>
-            {toggleDropdown && <ul className="show">
+            {toggleDropdown && <ul>
               <li onClick={() => setRegionSelected(false)} >Any region</li>
               <li onClick={selectAsia} >Asia</li>
               <li onClick={selectEurope}>Europe</li>
@@ -123,8 +123,8 @@ function selectAntarctic(){
         </div>
         <div className="app__countrysList">
 
-           {!regionSelected && countrysList}
-           {regionSelected && countryListFiltered}
+           {!regionSelected ? countrysList : countryListFiltered}
+          
 
         </div>
       </div>

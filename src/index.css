@@ -46,7 +46,6 @@ body {
 
 .app__form {
   width: 100%;
-
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -56,20 +55,10 @@ body {
   margin-top: 30px;
 }
 
-.app__form-input {
-  background-color: white;
-  width: 100%;
-  border: none;
-  outline: none;
-  margin-right: auto;
-  padding: 12px;
-  margin: 0;
-}
-
 .app__form-input-container {
   display: flex;
   align-items: center;
-  width: 600px;
+  width: 70%;
   padding: 12px;
   box-shadow: 2px 3px 3px rgba(107, 101, 101, 0.418);
   width: 600px;
@@ -77,6 +66,14 @@ body {
   background-color: white;
   margin-right: auto;
   border-radius: 5px;
+}
+.app__form-input {
+  background-color: white;
+  width: 100%;
+  border: none;
+  outline: none;
+  margin-right: auto;
+  padding: 12px;
 }
 
 .app__form-input-container > button {
@@ -128,4 +125,35 @@ body {
   text-align: center;
   cursor: pointer;
   border-bottom: 1px solid rgba(190, 172, 172, 0.301);
+}
+
+@media screen and (max-width: 1000px) {
+  .app__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .app__form-input-container {
+    width: 310px;
+  }
+  .app__form {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 361px) {
+  .app__form-input-container {
+    width: 200px;
+  }
+  .app__form {
+    width: 200px;
+  }
+
+  .app__form-select {
+    width: 200px;
+  }
 }
