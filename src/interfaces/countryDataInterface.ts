@@ -23,7 +23,7 @@ landlocked: boolean
 languages: {}
 latlng: number[]
 maps: {googleMaps: string, openStreetMaps: string}
-name: {common: 'Afghanistan', official: string, nativeName: {}}
+name: {common: string, official: string, nativeName: {}}
 population: number
 region: string
 startOfWeek: string
