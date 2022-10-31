@@ -74,30 +74,13 @@ function App() {
   })
 
 
-  function selectAsia(){
-    setCountryDataMutable(countryData.filter((country) => country.region == "Asia" ))
+  function selectRegion(countryRegion : string){
+    setCountryDataMutable(countryData.filter((country) => country.region == countryRegion))
     setRegionSelected(true) 
   }
-  function selectEurope(){
-    setCountryDataMutable(countryData.filter((country) => country.region == "Europe" ))
-    setRegionSelected(true)
-  }
-  function selectAfrica(){
-    setCountryDataMutable(countryData.filter((country) => country.region == "Africa" ))
-    setRegionSelected(true)
-  }
-  function selectOceania(){
-    setCountryDataMutable(countryData.filter((country) => country.region == "Oceania" ))
-    setRegionSelected(true)
-  }
-  function selectAmericas(){
-    setCountryDataMutable(countryData.filter((country) => country.region == "Americas" ))
-    setRegionSelected(true)  
-  }
-  function selectAntarctic(){
-    setCountryDataMutable(countryData.filter((country) => country.region == "Antarctic" ))
-    setRegionSelected(true)
-  }
+
+  
+
 
   function showCountryInfo(event: any, countryName: any) {
     setToggleCountryInfo(true)
@@ -131,12 +114,12 @@ function App() {
             <h4  style={{fontWeight: 400}}onClick={() => setToggleDropdown(!toggleDropdown)}>Select by region:</h4>
             {toggleDropdown && <ul>
               <li onClick={() => setRegionSelected(false)} >Any region</li>
-              <li onClick={selectAsia} >Asia</li>
-              <li onClick={selectEurope}>Europe</li>
-              <li onClick={selectAfrica}>Africa</li>
-              <li onClick={selectOceania}>Oceania</li>
-              <li onClick={selectAmericas}>Americas</li>
-              <li onClick={selectAntarctic}>Antarctic</li>
+              <li onClick={() => selectRegion("Asia")} >Asia</li>
+              <li onClick={() => selectRegion("Europe")}>Europe</li>
+              <li onClick={() =>selectRegion("Africa")}>Africa</li>
+              <li onClick={() =>selectRegion("Oceania")}>Oceania</li>
+              <li onClick={() =>selectRegion("Americas")}>Americas</li>
+              <li onClick={() =>selectRegion("Antarctic")}>Antarctic</li>
             </ul>}
           </div>
 

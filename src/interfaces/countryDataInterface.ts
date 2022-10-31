@@ -1,4 +1,5 @@
 export interface countryDataInterface {
+common: any
     
 altSpellings: string[]
 area: number
@@ -23,7 +24,7 @@ landlocked: boolean
 languages: {}
 latlng: number[]
 maps: {googleMaps: string, openStreetMaps: string}
-name: {common: string, official: string, nativeName: {}}
+name: {common: string, official: string, nativeName: object}
 population: number
 region: string
 startOfWeek: string

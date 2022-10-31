@@ -92,6 +92,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   cursor: pointer;
 }
 
@@ -102,6 +103,11 @@ body {
   width: 200px;
   text-align: center;
   border-radius: 5px;
+}
+
+.app__form-select > h4:active {
+  transform: scale(0.978);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.753);
 }
 
 .app__form-select > ul {
@@ -138,6 +144,9 @@ body {
 
 @media screen and (max-width: 550px) {
   .app__form-input-container {
+    width: 310px;
+  }
+  .app__form-input {
     width: 310px;
   }
   .app__form {
