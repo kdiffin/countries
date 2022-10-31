@@ -16,4 +16,4 @@ function Country(props: { showCountryInfo: (arg0: React.MouseEvent<HTMLDivElemen
   )
 }
 
-export default Country
+export default Country 
