@@ -85,7 +85,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App ">
       <Navbar />
       {!toggleCountryInfo ? (
         <div className="app__body">
