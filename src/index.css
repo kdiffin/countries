@@ -1,6 +1,10 @@
 :root {
   --site-background: hsl(0, 0%, 98%);
   --lightmode-text: hsl(200, 15%, 8%);
+  --dark-mode-text: hsl(0, 0, 100%);
+  --dark-mode-elements: hsl(209, 23%, 22%);
+  --dark-mode-background: hsl(207, 26%, 17%);
+  --light-mode-input: hsl(0, 0%, 52%);
 }
 
 html,
@@ -17,6 +21,11 @@ body {
   color: var(--lightmode-text);
 
   height: 100vh;
+}
+
+.dark {
+  color: var(--dark-mode-text);
+  background-color: var(--dark-mode-background);
 }
 
 .app__body {
