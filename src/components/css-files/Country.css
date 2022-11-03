@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.25s;
-  color: var(--lightmode-text);
+
   flex-wrap: wrap;
   box-shadow: 0 4px 6px rgba(107, 101, 101, 0.418);
   margin: 15px;

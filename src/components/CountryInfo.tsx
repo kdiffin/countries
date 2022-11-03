@@ -3,6 +3,7 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import "./css-files/CountryInfo.css";
 
 function CountryInfo(props: {
+  toggleDarkMode: any;
   hideCountryInfo: React.MouseEventHandler<HTMLDivElement> | undefined;
   countryImg: string | undefined;
   countryName:
@@ -32,7 +33,6 @@ function CountryInfo(props: {
     | React.ReactPortal
     | null
     | undefined;
-  countryIndependant: any;
   countryPopulation:
     | string
     | number
@@ -86,6 +86,7 @@ function CountryInfo(props: {
     | React.ReactPortal
     | null
     | undefined;
+  countryIndependant: any;
   countryLanguages:
     | string
     | number
@@ -97,8 +98,17 @@ function CountryInfo(props: {
     | undefined;
 }) {
   return (
-    <div className="country-info">
-      <div onClick={props.hideCountryInfo} className="country-info__back">
+    <div
+      className={props.toggleDarkMode ? "country-info dark" : "country-info"}
+    >
+      <div
+        onClick={props.hideCountryInfo}
+        className={
+          props.toggleDarkMode
+            ? "country-info__back dark-element"
+            : "country-info__back "
+        }
+      >
         <KeyboardBackspaceIcon /> <span>Back</span>
       </div>
       <div className="country-info__body">

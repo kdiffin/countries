@@ -1,8 +1,8 @@
 :root {
   --site-background: hsl(0, 0%, 98%);
   --lightmode-text: hsl(200, 15%, 8%);
-  --dark-mode-text: hsl(0, 0, 100%);
-  --dark-mode-elements: hsl(209, 23%, 22%);
+  --dark-mode-text: white;
+  --dark-mode-element: hsl(209, 23%, 22%);
   --dark-mode-background: hsl(207, 26%, 17%);
   --light-mode-input: hsl(0, 0%, 52%);
 }
@@ -19,13 +19,17 @@ body {
 
 .App {
   color: var(--lightmode-text);
-
-  height: 100vh;
+  height: 100%;
 }
 
-.dark {
+body .dark {
   color: var(--dark-mode-text);
   background-color: var(--dark-mode-background);
+}
+
+body .dark-element {
+  color: var(--dark-mode-text);
+  background-color: var(--dark-mode-element);
 }
 
 .app__body {
@@ -112,6 +116,10 @@ body {
   width: 200px;
   text-align: center;
   border-radius: 5px;
+}
+
+.app__form .dark-element {
+  background-color: var(--dark-mode-element);
 }
 
 .app__form-select > h4:active {

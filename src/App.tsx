@@ -15,6 +15,7 @@ function App() {
   const [toggleCountryInfo, setToggleCountryInfo] = useState<boolean>(false);
   const [countryId, setCountryId] = useState<number>(0);
   const [regionSelected, setRegionSelected] = useState<boolean>(false);
+  const [toggleDarkMode, setToggleDarkMode] = useState<boolean>(false);
 
   useEffect(function () {
     console.log(countryData);
@@ -85,32 +86,46 @@ function App() {
   }
 
   return (
-    <div className="App ">
-      <Navbar />
+    <div className={toggleDarkMode ? "App dark" : "App "}>
+      <Navbar
+        switchDarkMode={() => setToggleDarkMode(!toggleDarkMode)}
+        toggleDarkMode={toggleDarkMode}
+      />
       {!toggleCountryInfo ? (
         <div className="app__body">
           <div className="app__form">
-            <div className="app__form-input-container">
+            <div
+              className={
+                toggleDarkMode
+                  ? "app__form-input-container dark-element"
+                  : "app__form-input-container"
+              }
+            >
               <span>
                 <SearchIcon className="app__form-input-search" />
               </span>
               <input
                 type="text"
-                className="app__form-input"
                 placeholder="Search for a country..."
+                className={
+                  toggleDarkMode
+                    ? "dark-element app__form-input"
+                    : "app__form-input"
+                }
               />
               <button type="submit"></button>
             </div>
 
-            <div className="app__form-select">
+            <div className={"app__form-select"}>
               <h4
                 style={{ fontWeight: 400 }}
                 onClick={() => setToggleDropdown(!toggleDropdown)}
+                className={toggleDarkMode ? "dark-element" : ""}
               >
                 Select by region:
               </h4>
               {toggleDropdown && (
-                <ul>
+                <ul className={toggleDarkMode ? "dark-element" : ""}>
                   <li onClick={() => setRegionSelected(false)}>Any region</li>
                   <li onClick={() => selectRegion("Asia")}>Asia</li>
                   <li onClick={() => selectRegion("Europe")}>Europe</li>
@@ -169,6 +184,7 @@ function App() {
                   Object.keys(countryData[countryId].languages)[0]
                 ]
           }
+          toggleDarkMode={toggleDarkMode}
         />
       )}
     </div>
