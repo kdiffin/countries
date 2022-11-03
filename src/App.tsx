@@ -14,6 +14,7 @@ function App() {
   const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
   const [toggleCountryInfo, setToggleCountryInfo] = useState<boolean>(false);
   const [countryId, setCountryId] = useState<number>(0);
+  const [countryInputName, setCountryInputName] = useState<string>("");
   const [regionSelected, setRegionSelected] = useState<boolean>(false);
   const [toggleDarkMode, setToggleDarkMode] = useState<boolean>(false);
 
@@ -112,6 +113,8 @@ function App() {
                     ? "dark-element app__form-input"
                     : "app__form-input"
                 }
+                onChange={(e) => setCountryInputName(e.target.value)}
+                name={countryInputName}
               />
               <button type="submit"></button>
             </div>
