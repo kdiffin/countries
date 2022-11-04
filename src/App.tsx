@@ -111,7 +111,9 @@ function App() {
     setToggleCountryInfo(false);
   }
 
-  function handleChange(e: any) {
+  function handleChange(e: {
+    target: { value: React.SetStateAction<string> };
+  }) {
     setCountryInputName(e.target.value);
   }
 
