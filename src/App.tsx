@@ -11,11 +11,18 @@ import CountryInfo from "./components/CountryInfo";
 function App() {
   const [countryData, setCountryData] = useState<any[]>([]);
   const [countryDataMutable, setCountryDataMutable] = useState<any[]>([]);
-  const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
-  const [toggleCountryInfo, setToggleCountryInfo] = useState<boolean>(false);
+  const [countryDataInput, setCountryDataInput] = useState<any[]>([]);
+  const [countryDataInputMutable, setCountryDataInputMutable] = useState<any[]>(
+    []
+  );
+
   const [countryId, setCountryId] = useState<number>(0);
   const [countryInputName, setCountryInputName] = useState<string>("");
+  const [toggleCountryInfo, setToggleCountryInfo] = useState<boolean>(false);
+  const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
   const [regionSelected, setRegionSelected] = useState<boolean>(false);
+  const [searching, setSearching] = useState<boolean>(false);
+
   const [toggleDarkMode, setToggleDarkMode] = useState<boolean>(false);
 
   useEffect(function () {
@@ -66,11 +73,29 @@ function App() {
     );
   });
 
+  const countryListInputFiltered = countryDataInputMutable.map((country) => {
+    return (
+      <Country
+        countryName={country.name.common}
+        countryImg={country.flags.png}
+        countryRegion={country.region}
+        countryCapital={country.capital}
+        countryPopulation={country.population}
+        key={nanoid()}
+        showCountryInfo={showCountryInfo}
+        name={country.name.common}
+      />
+    );
+  });
+
   function selectRegion(countryRegion: string) {
     setCountryDataMutable(
-      countryData.filter((country) => country.region == countryRegion)
+      countryData.filter((country) => country.region === countryRegion)
     );
     setRegionSelected(true);
+    setCountryDataInputMutable(
+      countryDataInput.filter((country) => country.region === countryRegion)
+    );
   }
 
   function showCountryInfo(event: any, countryName: any) {
@@ -85,6 +110,38 @@ function App() {
   function hideCountryInfo() {
     setToggleCountryInfo(false);
   }
+
+  function handleChange(e: any) {
+    setCountryInputName(e.target.value);
+  }
+
+  useEffect(() => {
+    setCountryDataInput(
+      countryData.filter(
+        (country) =>
+          country.name.common
+            .slice(0, countryInputName.length)
+            .toUpperCase() === countryInputName.toUpperCase()
+      )
+    );
+
+    countryInputName.length < 1 ? setSearching(false) : setSearching(true);
+  }, [countryInputName]);
+
+  const countryListInput = countryDataInput.map((country) => {
+    return (
+      <Country
+        countryName={country.name.common}
+        countryImg={country.flags.png}
+        countryRegion={country.region}
+        countryCapital={country.capital}
+        countryPopulation={country.population}
+        key={nanoid()}
+        showCountryInfo={showCountryInfo}
+        name={country.name.common}
+      />
+    );
+  });
 
   return (
     <div className={toggleDarkMode ? "App dark" : "App "}>
@@ -113,7 +170,7 @@ function App() {
                     ? "dark-element app__form-input"
                     : "app__form-input"
                 }
-                onChange={(e) => setCountryInputName(e.target.value)}
+                onChange={handleChange}
                 name={countryInputName}
               />
               <button type="submit"></button>
@@ -141,7 +198,13 @@ function App() {
             </div>
           </div>
           <div className="app__countrysList">
-            {!regionSelected ? countrysList : countryListFiltered}
+            {!searching
+              ? !regionSelected
+                ? countrysList
+                : countryListFiltered
+              : !regionSelected
+              ? countryListInput
+              : countryListInputFiltered}
           </div>
         </div>
       ) : (
