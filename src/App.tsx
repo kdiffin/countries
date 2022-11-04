@@ -228,7 +228,7 @@ function App() {
           countrySubRegion={countryData[countryId].subregion}
           countryCapital={
             countryData[countryId].capital === undefined
-              ? "No capital"
+              ? "No capital..."
               : countryData[countryId].capital[0]
           }
           countryDomain={countryData[countryId].tld}

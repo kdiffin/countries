@@ -10,80 +10,72 @@ function CountryInfo(props: {
     | string
     | number
     | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | React.ReactFragment
     | React.ReactPortal
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | null
     | undefined;
   countryOfficialName:
     | string
     | number
     | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | React.ReactFragment
     | React.ReactPortal
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | null
     | undefined;
   countryNativeName:
     | string
     | number
     | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | React.ReactFragment
     | React.ReactPortal
-    | null
-    | undefined;
-  countryPopulation:
-    | string
-    | number
-    | boolean
     | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-    | React.ReactFragment
-    | React.ReactPortal
     | null
     | undefined;
+  countryPopulation: number | bigint;
   countryRegion:
     | string
     | number
     | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | React.ReactFragment
     | React.ReactPortal
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | null
     | undefined;
   countrySubRegion:
     | string
     | number
     | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | React.ReactFragment
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | null
     | undefined;
   countryCapital:
     | string
     | number
     | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | React.ReactFragment
     | React.ReactPortal
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | null
     | undefined;
   countryDomain:
     | string
     | number
     | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | React.ReactFragment
     | React.ReactPortal
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | null
     | undefined;
   countryCurrency:
     | string
     | number
     | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | React.ReactFragment
     | React.ReactPortal
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | null
     | undefined;
   countryIndependant: any;
@@ -91,12 +83,14 @@ function CountryInfo(props: {
     | string
     | number
     | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | React.ReactFragment
     | React.ReactPortal
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | null
     | undefined;
 }) {
+  const formatter = new Intl.NumberFormat("en");
+
   return (
     <div
       className={props.toggleDarkMode ? "country-info dark" : "country-info"}
@@ -126,7 +120,7 @@ function CountryInfo(props: {
             </p>
             <p>
               <span>Population: </span>
-              {props.countryPopulation}
+              {formatter.format(props.countryPopulation)}
             </p>
             <p>
               <span>Region: </span>
