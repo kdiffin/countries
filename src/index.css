@@ -38,7 +38,7 @@ body .dark-element {
   padding-left: 70px;
   display: flex;
   height: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
   flex-direction: column;
   flex-wrap: wrap;
 }
